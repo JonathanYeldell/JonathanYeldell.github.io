@@ -1,4 +1,8 @@
-/* || General setup */
+/* || General setup
+
+How do I change the font weight (not showing changes) also, How do i do the flexbox?
+
+*/
 
 html, body {
   margin: 0;
@@ -7,7 +11,7 @@ html, body {
 
 html {
   font-size: 10px;
-  background-color: #a9a9a9;
+  background-color: #33B9FF;
 }
 
 body {
@@ -19,12 +23,12 @@ body {
 /* || typography */
 
 h1, h2, h3 {
-  font-family: 'Cinzel Decorative', cursive;
+  font-family: 'Open Sans', sans-serif;
   color: #2a2a2a;
 }
 
 p, input, li {
-  font-family: 'Roboto Condensed', sans-serif;
+  font-family: 'Open Sans', sans-serif;
   color: #2a2a2a;
 }
 
@@ -32,11 +36,14 @@ h1 {
   font-size: 4rem;
   text-align: center;
   text-shadow: 2px 2px 10px black;
+  font-weight: bold;
 }
 
 h2 {
   font-size: 3rem;
   text-align: center;
+  font-weight: 200;
+
 }
 
 h3 {
