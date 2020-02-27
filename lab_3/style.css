@@ -34,7 +34,7 @@ p, input, li {
 
 h1 {
   font-size: 4rem;
-  text-align: center;
+  text-align: left;
   text-shadow: 2px 2px 10px black;
   font-weight: bold;
 }
