@@ -1,4 +1,3 @@
-
 html, body {
   margin: 0;
   padding: 0;
@@ -13,23 +12,28 @@ html, body {
   flex-wrap: wrap;
   margin-bottom: 15px;
   background-color: #1E4770
-  
 }
 
 .header h1
 { 
-  /* border: 1px solid rgb(9, 248, 101); */
   font-family: 'Source Code Pro';
   text-shadow: 2px 2px 4px #000000;
   font-size: 45px;
   color: rgb(223, 235, 247)
-
 }
 
 .header img 
 { 
   height: 100px;
   width: 160x;
+}
+
+.wrapper{
+  display:flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  flex-direction: row;
+  align-items: center;
 }
 
 .content{
@@ -42,7 +46,6 @@ html, body {
 
 h2
 {
-  /* border: 1px solid rgb(17, 226, 90); */
   font-weight: bold;
   font-family: 'Source Code Pro';
   color: rgb(33, 145, 145);
@@ -55,48 +58,25 @@ color:black;
 
 .information
 {
-  /* border: 1px solid rgba(104, 46, 59, 0.897); */
   border: 1px dashed rgb(145, 57, 57);
   background-color: rgba(243, 243, 243, 0.938);
   font-size: 20px;
   width: 100%
-  
 }
-
-.wrapper{
-  display:flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  flex-direction: row;
-  align-items: center;
-}
-
 
 .body_picture{
-  /* margin-right: 2%; */
-  /* margin-left: 2%; */
   width: 150px;
-  /* padding-right: 20px; */
-  /* background-color: rgba(255, 255, 255, 0.938); */
-
 }
 
 .body_picture img{
   width: 110px;
   border: 1px solid #000;
   border-radius: 4px;  
-  
 }
 
-/* .information p{
-  font-style: italic;
-} */
-
- h3{
-  font-style: italic;
-
+h3{
+ font-style: italic;
 }
-
 
 @media screen and (max-width: 1000px){
 
@@ -114,3 +94,4 @@ color:black;
   flex-direction: column;
 }
 }
+
