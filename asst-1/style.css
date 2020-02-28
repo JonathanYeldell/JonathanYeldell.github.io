@@ -6,6 +6,8 @@ html, body {
   background-color: blanchedalmond;
 }
 
+li div { font-weight: normal; }
+
 
 .header {
   display: flex;
@@ -58,7 +60,8 @@ color:black;
 .information
 {
   /* border: 1px solid rgba(104, 46, 59, 0.897); */
-  background-color: rgba(255, 255, 255, 0.938);
+  border: 1px dashed rgb(145, 57, 57);
+  background-color: rgba(243, 243, 243, 0.938);
   font-size: 20px;
   width: 100%
   
@@ -88,7 +91,6 @@ color:black;
   border-radius: 4px;  
   
 }
-
 
 @media screen and (max-width: 1000px){
 
