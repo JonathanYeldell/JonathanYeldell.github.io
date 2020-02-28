@@ -92,6 +92,12 @@ color:black;
   font-style: italic;
 } */
 
+ h3{
+  font-style: italic;
+
+}
+
+
 @media screen and (max-width: 1000px){
 
 .body_picture{
@@ -107,9 +113,4 @@ color:black;
   align-items:center;
   flex-direction: column;
 }
-}
-
- h3{
-  font-style: italic;
-
 }
