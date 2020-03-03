@@ -6,8 +6,14 @@
   </head>
 
   <body>
+
     <div class="container">
       <div class="wrapper">
+
+        <button class="button" onclick="addParagraph()">
+          Click me to change text
+        </button>
+
         <div class="header">Prof A's Demo Page</div>
         <button class="button" onclick="clickMe()">
           Click me to make a change
@@ -24,11 +30,30 @@
         <div class="footer"></div>
       </div>
     </div>
+
     <script>
+
       function clickMe() {
         const content = document.querySelector(".content");
         content.innerHTML = "Hello world";
       }
+
+      // CHANGE HEADER
+      const newtitle = document.querySelector(".header");
+      newtitle.innerHTML = "Jonathan Yeldell's Lab 4";
+
+      function addParagraph(){
+      // INSERT NEW PARAGRAPHS
+
+      var new_paragraph = document.createElement("div");
+      var paragraph_content = document.createTextNode("Jonathan Rocks and Kicks ass hard!");
+      new_paragraph.appendChild(paragraph_content);
+
+      var currentDiv = document.querySelector('.content');
+      currentDiv.appendChild(new_paragraph);
+      }
+      
+
     </script>
   </body>
 </html>
