@@ -10,10 +10,6 @@
     <div class="container">
       <div class="wrapper">
 
-        <button class="button" onclick="addParagraph()">
-          Click me to change text
-        </button>
-
         <div class="header">Prof A's Demo Page</div>
         <button class="button" onclick="clickMe()">
           Click me to make a change
@@ -36,24 +32,60 @@
       function clickMe() {
         const content = document.querySelector(".content");
         content.innerHTML = "Hello world";
+
+        //SUBSTRING
+        var fullname = 'Jonathan Yeldell'
+        var firstname = fullname.substring(0, 8);
+        var lastname = fullname.substring(9, 16);
+
+        //SUBSTRING MATH
+        var firstname_length = firstname.length;
+        var lastname_length = lastname.length;
+
+        var fullname_length = firstname_length + lastname_length;
+
+        // STRINGS IN NAME
+        var name = "Jonathan";
+        var name_char_length = name.length;
+
+        // 3RD CHAR IN NAME
+        var char3 = name.charAt(2).toUpperCase()
+        
+        // LAST 3 CHAR IN NAME  
+        var slice_name = name.length-3;
+        var last_3_chars = name.slice(slice_name);
+
+        // CHANGE HEADER
+        const newtitle = document.querySelector(".header");
+        newtitle.innerHTML = "Jonathan Yeldell's Lab 4 " + fullname_length;
+
+        // INSERT PARAGRAPH (PARAGRAPH 1)
+        var new_paragraph = document.createElement("div");
+        var paragraph_content = document.createTextNode("My name has " + name_char_length + " characters");
+        new_paragraph.appendChild(paragraph_content);
+
+        var currentDiv = document.querySelector('.content');
+        currentDiv.appendChild(new_paragraph);
+
+        // INSERT PARAGRAPH (PARAGRAPH 2)
+        var new_paragraph_2 = document.createElement("div");
+        var paragraph_content_2 = document.createTextNode("The third character in my name is " + char3);
+        new_paragraph_2.appendChild(paragraph_content_2);
+
+        var currentDiv_2 = document.querySelector('.content');
+        currentDiv_2.appendChild(new_paragraph_2);
+
+        var line_2 = document.createElement("div");
+        var line_2_content = document.createTextNode( last_3_chars);
+        line_2.appendChild(line_2_content);
+
+        var line_2_div = document.querySelector('.content');
+        line_2_div.appendChild(line_2);
+
       }
 
-      // CHANGE HEADER
-      const newtitle = document.querySelector(".header");
-      newtitle.innerHTML = "Jonathan Yeldell's Lab 4";
 
-      function addParagraph(){
-      // INSERT NEW PARAGRAPHS
-
-      var new_paragraph = document.createElement("div");
-      var paragraph_content = document.createTextNode("Jonathan Rocks and Kicks ass hard!");
-      new_paragraph.appendChild(paragraph_content);
-
-      var currentDiv = document.querySelector('.content');
-      currentDiv.appendChild(new_paragraph);
-      }
-      
-
+     
     </script>
   </body>
 </html>
