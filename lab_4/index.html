@@ -60,31 +60,51 @@
         newtitle.innerHTML = "Jonathan Yeldell's Lab 4 " + fullname_length;
 
         // INSERT PARAGRAPH (PARAGRAPH 1)
-        var new_paragraph = document.createElement("div");
+        var new_paragraph = document.createElement("p");
         var paragraph_content = document.createTextNode("My name has " + name_char_length + " characters");
         new_paragraph.appendChild(paragraph_content);
+
+        new_paragraph.className = "paragraph_1";
 
         var currentDiv = document.querySelector('.content');
         currentDiv.appendChild(new_paragraph);
 
         // INSERT PARAGRAPH (PARAGRAPH 2)
-        var new_paragraph_2 = document.createElement("div");
+        var br = document.createElement("br");
+
+        var new_paragraph_2 = document.createElement("p");
         var paragraph_content_2 = document.createTextNode("The third character in my name is " + char3);
+        var line_2_content = document.createTextNode(last_3_chars);
+        
+      
         new_paragraph_2.appendChild(paragraph_content_2);
+        new_paragraph_2.appendChild(br);
+        new_paragraph_2.appendChild(line_2_content);
+
+        new_paragraph_2.className = "paragraph 2";
 
         var currentDiv_2 = document.querySelector('.content');
         currentDiv_2.appendChild(new_paragraph_2);
 
-        var line_2 = document.createElement("div");
-        var line_2_content = document.createTextNode( last_3_chars);
-        line_2.appendChild(line_2_content);
 
-        var line_2_div = document.querySelector('.content');
-        line_2_div.appendChild(line_2);
+
+
+        // var line_2_content = document.createTextNode(last_3_chars);
+        // currentDiv_2.appendChild(line_2_content);
+
+
+
+
+        // var line_2 = document.createElement("p");
+        // var line_2_content = document.createTextNode( last_3_chars);
+        // line_2.appendChild(line_2_content);
+
+
+        
+        // var line_2_div = document.querySelector('.content');
+        // line_2_div.appendChild(line_2);
 
       }
-
-
      
     </script>
   </body>
