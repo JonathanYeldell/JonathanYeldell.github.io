@@ -68,11 +68,11 @@ color:black;
 .body_picture{
   margin-right: 12px;
   justify-content: center;
-  width:320px;
+  width: 115px;
 }
 
 .body_picture img{
-  width: 110px;
+  width: inherit;
   border: 1px solid #000;
   border-radius: 4px; 
   margin-bottom: 15px; 
@@ -92,14 +92,14 @@ h3{
 
 @media screen and (max-width: 1000px){
 
-.body_picture{
+/* .body_picture{
   
   display: flex;
   flex-direction:row;
-  justify-content:space-evenly;
+  justify-content:center;
   align-items:center ;
 
-}
+} */
 
 .body_picture p {
   display: flex;
