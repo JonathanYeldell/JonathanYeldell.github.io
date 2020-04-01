@@ -19,3 +19,15 @@ newImage.setAttribute('src', xxx);
 thumbBar.appendChild(newImage);
 
 /* Wiring up the Darken/Lighten button */
+function darken() {
+  //console.log('FUNCTION TEST: ', btn.innerHTML);
+  if(btn.innerHTML === 'Darken') {
+    btn.innerHTML = 'Lighten';
+    btn.setAttribute('class', 'light');
+    overlay.setAttribute('background-color', 'rgba(0, 0, 0, 0.5)');
+  } else {
+    btn.innerHTML = 'Darken';
+    btn.setAttribute('class', 'dark');
+    overlay.setAttribute('background-color', 'rgba(0, 0, 0, 0)');
+  }
+}
