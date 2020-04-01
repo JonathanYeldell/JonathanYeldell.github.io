@@ -4,19 +4,26 @@ const thumbBar = document.querySelector('.thumb-bar');
 const btn = document.querySelector('button');
 const overlay = document.querySelector('.overlay');
 
+const image_array = ["images/pic1.png","images/pic2.png","images/pic3.png","images/pic4.png","images/pic5.png"]
+
 /* Looping through images */
-var slides = document.getElementsByClassName("mySlides");
-  var dots = document.getElementsByClassName("dot");
-  if (n > slides.length) {slideIndex = 1}
-  if (n < 1) {slideIndex = slides.length}
-  for (i = 0; i < slides.length; i++) {
-      slides[i].style.display = "none";
-  }
+
+var displayed_image = document.getElementsByClassName("displayed-img");
 
 
-const newImage = document.createElement('img');
-newImage.setAttribute('src', xxx);
-thumbBar.appendChild(newImage);
+console.log(image_array);
+console.log(displayed_image);
+
+  for (i = 0; i < image_array.length; i++) {
+      displayed_image.src = image_array[i];
+      }
+
+// console.log(slides);
+
+
+// const newImage = document.createElement('img');
+// newImage.setAttribute('src', xxx);
+// thumbBar.appendChild(newImage);
 
 /* Wiring up the Darken/Lighten button */
 function darken() {
