@@ -12,7 +12,7 @@
       <div class="header">Jonathan's List of Countries</div>
       <!-- <button class="button" onclick="loadData()">Load Some JSON</button> -->
       
-      <button class="button" onclick="replace(mixArray(countries),old_ol)">
+      <button class="button" onclick="replace(mixArray(countries),old_ol,item_list)">
         Click me to replace list entries
       </button>
 
@@ -271,12 +271,14 @@
       { "name": "Zimbabwe", "code": "ZW" }
     ]
     var items = [];
-
+    var item_list = [];
+  
     // CODE FOR STARTING LIST 
- 
+
       var ol = document.createElement("ol");
       ol.className = "countries";
       var old_ol =document.querySelector(".content").appendChild(ol);
+      
 
       for (var i = 0; i < countries.length; i++){
 
@@ -287,17 +289,18 @@
 
         items = country_codes + " " + country_names;
 
+        item_list.push(items);
+
         var text = document.createTextNode(items);
         li.appendChild(text);
         ol.appendChild(li);
         document.querySelector(".content").appendChild(ol);
-
       }
-
 
     // RANDOMIZES ARRAY ORDER
 
     function mixArray(countries) {
+
       for (var i = countries.length - 1; i > 0; i--) {
         var j = Math.floor(Math.random() * (i + 1));
         var temp = countries[i];
@@ -306,14 +309,18 @@
       }
       return countries;
     }
-      
+    
+    var mixed_countries = mixArray(countries);
 
     // REPLACES LIST OF COUNTRIES
 
-    function replace(countries,old_ol){
+    function replace(countries,old_ol,item_list){
+
+      var random_item_list = [];
+      var item_log = [];
+
       document.querySelector(".content").innerHTML = "";
       var new_ol = document.createElement("ol");
-      // new_ol.style.fontWeight = 900;
       
       for (var i = 0; i<25; i++){
 
@@ -322,7 +329,9 @@
         var new_country_codes = countries[i]['code'];
         var new_country_names = countries[i]['name'];
 
+
         var new_items =  new_country_codes + " " + new_country_names;
+        random_item_list.push(new_items);
 
         var new_text = document.createTextNode(new_items);
         new_li.appendChild(new_text);
@@ -330,24 +339,35 @@
         document.querySelector(".content").appendChild(new_ol);
         
       }
-      var x = document.querySelector(".content").appendChild(new_ol);
-      // console.log(old_ol);
 
-      var old_items = old_ol.getElementsByTagName("li");
-      var new_items = new_ol.getElementsByTagName("li");
-      var counter = 0;
+      // console.log(random_item_list);    
+    
+      for (var i = 0, len = item_list.length; i < len; i++ ) {
+        if(item_list[i] in random_item_list){
+          var word = "pass";
+        }
+        else{
+          item_log.push(item_list[i]);
+        }
+      
+       }
 
-
-      // for (var i = 0, len = old_items.length; i < len; i++ ) {
-      //   if(old_items[i] in new_items){
-      //     var word = "pass";
-      //   }
-      //   else{
-      //     counter++;
-      //     console.log(old_items[i]);
-      //   }
+      console.log(item_log);
       
     }
+
+
+    // console.log(random_item_list);
+    // for (var i = 0, len = item_list.length; i < len; i++ ) {
+    //   if(item_list[i] in random_item_list){
+    //     var word = "pass";
+    //   }
+    //   else{
+    //     console.log(item_list[i]);
+    //     }
+      
+    // }
+    
     
   </script>
 </body>
