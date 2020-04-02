@@ -10,16 +10,15 @@ const image_array = ["images/pic1.png","images/pic2.png","images/pic3.png","imag
 
 var displayed_image = document.getElementsByClassName("displayed-img");
 
+for(let i = 0; i < image_array.length; i++) {
+  const newImage = document.createElement('img');
+  newImage.setAttribute('src', image_array[i]);
+  thumbBar.appendChild(newImage);
 
-  for (i = 0; i < image_array.length; i++) {
-    displayedImage.setAttribute('src',image_array[i])
-    // console.log(image_array[i]);
-    }
-
-
-// const newImage = document.createElement('img');
-// newImage.setAttribute('src', xxx);
-// thumbBar.appendChild(newImage);
+  newImage.onclick = function(e) {
+    displayedImage.src = image_array[i];
+  }
+}  
 
 /* Wiring up the Darken/Lighten button */
 function darken() {
