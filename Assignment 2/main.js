@@ -8,17 +8,13 @@ const image_array = ["images/pic1.png","images/pic2.png","images/pic3.png","imag
 
 /* Looping through images */
 
-// console.log(image_array);
-// console.log(displayed_image);
-
 var displayed_image = document.getElementsByClassName("displayed-img");
 
 
-
   for (i = 0; i < image_array.length; i++) {
-      displayedImage.setAttribute('src',image_array[i])
-      console.log(image_array[i]);
-      }
+    displayedImage.setAttribute('src',image_array[i])
+    // console.log(image_array[i]);
+    }
 
 
 // const newImage = document.createElement('img');
