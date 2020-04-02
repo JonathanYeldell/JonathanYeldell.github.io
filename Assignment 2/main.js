@@ -13,8 +13,11 @@ const image_array = ["images/pic1.png","images/pic2.png","images/pic3.png","imag
 
 var displayed_image = document.getElementsByClassName("displayed-img");
 
+
+
   for (i = 0; i < image_array.length; i++) {
-      displayed_image['src'] = image_array[i];
+      displayedImage.setAttribute('src',image_array[i])
+      console.log(image_array[i]);
       }
 
 
