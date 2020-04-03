@@ -13,7 +13,7 @@ var displayed_image = document.getElementsByClassName("displayed-img");
 for(let i = 0; i < image_array.length; i++) {
   const newImage = document.createElement('img');
   newImage.setAttribute('src', image_array[i]);
-  newImage.setAttribute('class', 'thumb-img');
+  newImage.setAttribute('class', 'thumb-img')
   thumbBar.appendChild(newImage);
 
   newImage.onclick = function() {
