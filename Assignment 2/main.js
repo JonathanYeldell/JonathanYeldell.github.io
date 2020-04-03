@@ -27,10 +27,10 @@ function darken() {
   if(btn.innerHTML === 'Darken') {
     btn.innerHTML = 'Lighten';
     btn.setAttribute('class', 'light');
-    overlay.setAttribute('background-color', 'rgba(0, 0, 0, 0.5)');
+    overlay.style['background-color'] = 'rgba(0, 0, 0, 0.5)';
   } else {
     btn.innerHTML = 'Darken';
     btn.setAttribute('class', 'dark');
-    overlay.setAttribute('background-color', 'rgba(0, 0, 0, 0)');
+    overlay.style['background-color'] = 'rgba(0, 0, 0, 0)';
   }
 }
