@@ -1,3 +1,8 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
 h1 {
   font-family: helvetica, arial, sans-serif;
   text-align: center;
@@ -10,6 +15,14 @@ h2 {
 body {
   width: 640px;
   margin: 0 auto;
+  background-color: #E4D6A7;
+}
+
+.header {
+  top: 0;
+  width: 100%;
+  background-color: #25283D;
+  color: aliceblue;
 }
 
 .full-img {

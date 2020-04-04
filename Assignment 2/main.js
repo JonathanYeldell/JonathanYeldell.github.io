@@ -13,7 +13,7 @@ var displayed_image = document.getElementsByClassName("displayed-img");
 for(let i = 0; i < image_array.length; i++) {
   const newImage = document.createElement('img');
   newImage.setAttribute('src', image_array[i]);
-  newImage.setAttribute('class', 'thumb-img');
+  newImage.setAttribute('class', 'thumb-img')
   thumbBar.appendChild(newImage);
 
   newImage.onclick = function() {
@@ -27,10 +27,10 @@ function darken() {
   if(btn.innerHTML === 'Darken') {
     btn.innerHTML = 'Lighten';
     btn.setAttribute('class', 'light');
-    overlay.setAttribute('background-color', 'rgba(0, 0, 0, 0.5)');
+    overlay.style['background-color'] = 'rgba(0, 0, 0, 0.5)';
   } else {
     btn.innerHTML = 'Darken';
     btn.setAttribute('class', 'dark');
-    overlay.setAttribute('background-color', 'rgba(0, 0, 0, 0)');
+    overlay.style['background-color'] = 'rgba(0, 0, 0, 0)';
   }
 }
