@@ -1,27 +1,116 @@
 <!DOCTYPE html>
+
 <html lang="en">
-  <head>
+<meta charset="UTF-8">
+
+
+<head>
     <title>Charts Lab</title>
     <link rel="stylesheet" type="text/css" href="./styles.css" />
     <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
-  </head>
-  <body>
+</head>
+
+<body>
     <div class="container">
-      <div class="wrapper">
-        <div class="header">Frontend Libraries: Charts Lab</div>
-        <div class="content">
-          When your lab is done, this should be replaced with a useful chart full of food data.
+        <div class="wrapper">
+            <div class="header">Frontend Libraries: Charts Lab</div>
+            <div class="content">
+                When your lab is done, this should be replaced with a useful chart full of food data.
+            </div>
+            <div class="footer">Let's eat out in the future!</div>
         </div>
-        <div class="footer">Let's eat out in the future!</div>
-      </div>
     </div>
+
+    <div id="chartContainer" style="height: 300px; width: 100%;"></div>
+    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+
+
     <script>
-      fetch('./countries.json') // replace this with the food safety data set
-        .then((data) => data.json()) // this is an "implicit return" - we're returning the results of the Fetch request to the next step.
-        .then((data) => { // this is an explicit return. If I want my information to go further, I'll need to use the "return" keyword before the brackets close
-          console.log(data);
-          // return data; // <- this will pass the data to the next "then" statement when I'm ready.
-        })
+        var count_array = [];
+        var result = {};
+        var jresult ={};
+        var dataPoints = [];
+        var keys = [];
+        var value = [];
+
+        fetch('https://data.princegeorgescountymd.gov/resource/umjn-t2iz.json')
+            .then((data) => data.json()) // this is an "implicit return" - we're returning the results of the Fetch request to the next step.
+            .then((data) => { // this is an explicit return. If I want my information to go further, I'll need to use the "return" keyword before the brackets close
+                console.log(data);
+                return data; // <- this will pass the data to the next "then" statement when I'm ready.
+            })
+            .then(function (data) {
+
+                // console.log(data);
+                // console.log(data[0]['category']);
+                // console.log(data.length);
+
+                for (i = 0; i < data.length; i++) {
+                    count_array.push(data[i]['category'])
+                }
+                // console.log(count_array);
+                for (var i = 0; i < count_array.length; ++i) {
+
+                    if (!result[count_array[i]])
+                        result[count_array[i]] = 0;
+                    result[count_array[i]]++;
+                }
+                // console.log(result);
+                jresult = JSON.stringify(result);
+                console.log(jresult);
+                
+                return result;
+            })
+            .then(function (data) {
+                // console.log(result[0]);
+
+    
+                for (var key in result) {
+                    value.push(result[key]);
+                    keys.push(key);
+                }
+                console.log(keys);
+                console.log(value);
+
+                var chart = new CanvasJS.Chart("chartContainer", {
+                    animationEnabled: true,
+                    theme: "light2", // "light1", "light2", "dark1", "dark2"
+                    title: {
+                        text: "PG Estabkishments"
+                    },
+                    subtitles: [{
+                        text: "In USD",
+                        fontSize: 16
+                    }],
+                    axisY: {
+                        prefix: "$",
+                        scaleBreaks: {
+                            customBreaks: [{
+                                startValue: 0,
+                                endValue: 35000
+                            }]
+                        }
+                    },
+                    data: [{
+                        type: "column",
+                        yValueFormatString: "$#,##0.00",
+                        dataPoints: [
+                            { label: "USA", y: 57466.787 },
+                            { label: "Austraila", y: 49927.82 },
+                            { label: "UK", y: 39899.388 },
+                            { label: "UAE", y: 37622.207 },
+                            { label: "Brazil", y: 8649.948 },
+                            { label: "China", y: 8123.181 },
+                            { label: "Indonesia", y: 3570.295 },
+                            { label: "India", y: 1709.387 }
+                        ]
+                    }]
+                });
+                chart.render();
+
+            })
+
     </script>
-  </body>
+</body>
+
 </html>
