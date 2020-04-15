@@ -29,14 +29,13 @@
         var count_array = [];
         var result = {};
         var jresult ={};
-        var dataPoints = [];
-        var keys = [];
-        var value = [];
+        // var keys = [];
+        // var value = [];
 
         fetch('https://data.princegeorgescountymd.gov/resource/umjn-t2iz.json')
             .then((data) => data.json()) // this is an "implicit return" - we're returning the results of the Fetch request to the next step.
             .then((data) => { // this is an explicit return. If I want my information to go further, I'll need to use the "return" keyword before the brackets close
-                console.log(data);
+                // console.log(data);
                 return data; // <- this will pass the data to the next "then" statement when I'm ready.
             })
             .then(function (data) {
@@ -57,20 +56,38 @@
                 }
                 // console.log(result);
                 jresult = JSON.stringify(result);
-                console.log(jresult);
+                // console.log(jresult);
                 
+                console.log(result);
                 return result;
             })
+
             .then(function (data) {
                 // console.log(result[0]);
 
-    
-                for (var key in result) {
-                    value.push(result[key]);
-                    keys.push(key);
+                // for (var key in result) {
+                //     value.push(result[key]);
+                //     keys.push(key);
+                // }
+                // console.log(keys);
+                // console.log(value);
+
+                const dataPoints = [];
+
+
+                Object.keys(data).forEach(category => {
+                let dataPoint = {
+                y: data[category].length,
+                label: category,
                 }
-                console.log(keys);
-                console.log(value);
+                dataPoints.push(dataPoint);
+                })
+                console.log(dataPoints);
+                return dataPoints
+            })
+
+            .then ((data) => {
+
 
                 var chart = new CanvasJS.Chart("chartContainer", {
                     animationEnabled: true,
@@ -114,3 +131,4 @@
 </body>
 
 </html>
+
