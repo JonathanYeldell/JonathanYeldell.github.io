@@ -74,10 +74,9 @@
 
                 const dataPoints = [];
 
-
                 Object.keys(data).forEach(category => {
                 let dataPoint = {
-                y: data[category].length,
+                y: data[category],
                 label: category,
                 }
                 dataPoints.push(dataPoint);
