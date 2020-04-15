@@ -13,23 +13,21 @@
 <body>
     <div class="container">
         <div class="wrapper">
-            <div class="header">Frontend Libraries: Charts Lab</div>
-            <div class="content">
-                <div classs= "chartContainer"></div>
-            <div class="footer">Let's eat out in the future!</div>
+          <div class="header">Frontend Libraries: Charts Lab</div>
+          <div class="content">
+            <div id="chartContainer" style="height: 370px; width: 100%;">
+            </div>
+          </div>
+          <div class="footer">Let's eat!</div>
         </div>
-    </div>
+      </div>
 
-    <div id="chartContainer" style="height: 300px; width: 100%;"></div>
     <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 
 
     <script>
-        var count_array = [];
-        var result = {};
-        var jresult ={};
-        // var keys = [];
-        // var value = [];
+        let count_array = [];
+        let result = {};
 
         fetch('https://data.princegeorgescountymd.gov/resource/umjn-t2iz.json')
             .then((data) => data.json()) // this is an "implicit return" - we're returning the results of the Fetch request to the next step.
