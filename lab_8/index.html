@@ -15,8 +15,7 @@
         <div class="wrapper">
             <div class="header">Frontend Libraries: Charts Lab</div>
             <div class="content">
-                When your lab is done, this should be replaced with a useful chart full of food data.
-            </div>
+                <div classs= "chartContainer"></div>
             <div class="footer">Let's eat out in the future!</div>
         </div>
     </div>
@@ -55,9 +54,7 @@
                     result[count_array[i]]++;
                 }
                 // console.log(result);
-                jresult = JSON.stringify(result);
-                // console.log(jresult);
-                
+               
                 console.log(result);
                 return result;
             })
@@ -108,10 +105,14 @@
                         }
                     },
                     data: [{
-                        type: "column",
-                        yValueFormatString: "$#,##0.00",
-                        dataPoints: data
-                    }]
+                            type: "doughnut",
+                            startAngle: 60,
+                            //innerRadius: 60,
+                            indexLabelFontSize: 17,
+                            indexLabel: "{label} - #percent%",
+                            toolTipContent: "<b>{label}:</b> {y} (#percent%)",
+                            dataPoints: data
+                        }]
                 });
                 chart.render();
 
