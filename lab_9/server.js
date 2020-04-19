@@ -30,7 +30,7 @@ function processDataForFrontEnd(req, res) {
   // Your Fetch API call starts here
   // Note that at no point do you "return" anything from this function -
   // it instead handles returning data to your front end at line 34.
-    // fetch(baseURL)
+    fetch(baseURL)
 
       .then((data) => data.json())
       .then((data) => { // this is an explicit return. If I want my information to go further, I'll need to use the "return" keyword before the brackets close
@@ -45,6 +45,7 @@ function processDataForFrontEnd(req, res) {
           if (!result[count_array[i]]) result[count_array[i]] = 0;
           result[count_array[i]]++;
         }
+        console.log(result);
         return result;
       })
 
@@ -55,12 +56,12 @@ function processDataForFrontEnd(req, res) {
           let dataPoint = {y: data[category],label: category,}
           dataPoints.push(dataPoint);
         })
-        // console.log(dataPoints);
+        console.log(dataPoints);
         return dataPoints;
       })
 
       .then((data) => {
-        // console.log(data);
+        console.log(data);
         res.send({ data: data }); // here's where we return data to the front end
       })
     
