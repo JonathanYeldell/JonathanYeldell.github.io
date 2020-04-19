@@ -1,26 +1,103 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-  <title>Replace Me With Your Lab Page</title>
-  <link rel="stylesheet" type="text/css" href="./styles.css">
-</head>
+  <head>
+    <title>Jonathan's Lab 9</title>
+    <link rel="stylesheet" type="text/css" href="./styles.css" />
+    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+  </head>
 
-<body>
-  <div class="container">
-    <div class="wrapper">
-      <div class="header">Replace Me With Your Lab Page</div>
-      <div class="content"></div>
-      <div class="footer"></div>
+  <body>
+    <div class="container">
+      <div class="wrapper">
+        <div class="header">Frontend Libraries: Charts Lab</div>
+        <div class="content">
+          <div id="chartContainer" style="height: 370px; width: 100%;">
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
-  <script>
-    fetch('/api') // Rather than fetching from PG County, we're going to fetch from our own server.
-      .then(res => res.json())
-      .then(res => {
-        // Here's where your chart code should go.
-      })
-  </script>
-</body>
 
+    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+
+
+    <script>
+      let count_array = [];
+      let result = {};
+
+      fetch("/api") // Rather than fetching from PG County, we're going to fetch from our own server.
+        .then((data) => data.json())
+        .then((data) => {
+          console.log(data);
+          return data; // <- this will pass the data to the next "then" statement when I'm ready.
+        })
+        .then(function (data) {
+          for (i = 0; i < data.length; i++) {
+            count_array.push(data[i]["category"]);
+          }
+          // console.log(count_array);
+          for (var i = 0; i < count_array.length; ++i) {
+            if (!result[count_array[i]]) result[count_array[i]] = 0;
+            result[count_array[i]]++;
+          }
+          // console.log(result);
+
+          console.log(result);
+          return result;
+        })
+
+        .then(function (data) {
+          const dataPoints = [];
+
+          Object.keys(data).forEach((category) => {
+            let dataPoint = {
+              y: data[category],
+              label: category,
+            };
+            dataPoints.push(dataPoint);
+          });
+          console.log(dataPoints);
+          return dataPoints;
+        })
+
+        .then((data) => {
+          var chart = new CanvasJS.Chart("chartContainer", {
+            animationEnabled: true,
+            theme: "light2", // "light1", "light2", "dark1", "dark2"
+            title: {
+              text: "PG Establishments",
+            },
+            subtitles: [
+              {
+                text: "In USD",
+                fontSize: 16,
+              },
+            ],
+            axisY: {
+              prefix: "$",
+              scaleBreaks: {
+                customBreaks: [
+                  {
+                    startValue: 0,
+                    endValue: 35000,
+                  },
+                ],
+              },
+            },
+            data: [
+              {
+                type: "doughnut",
+                startAngle: 60,
+                //innerRadius: 60,
+                indexLabelFontSize: 17,
+                indexLabel: "{label} - #percent%",
+                toolTipContent: "<b>{label}:</b> {y} (#percent%)",
+                dataPoints: data,
+              },
+            ],
+          });
+          chart.render();
+        });
+    </script>
+  </body>
 </html>

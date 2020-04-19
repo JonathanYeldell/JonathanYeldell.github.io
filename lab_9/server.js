@@ -22,22 +22,49 @@ app.use(express.static('public'));
 
 
 function processDataForFrontEnd(req, res) {
-  const baseURL = ''; // Enter the URL for the data you would like to retrieve here
+  const baseURL = 'https://data.princegeorgescountymd.gov/resource/umjn-t2iz.json'; 
+  let count_array = [];
+  let result = {};
+
 
   // Your Fetch API call starts here
   // Note that at no point do you "return" anything from this function -
   // it instead handles returning data to your front end at line 34.
-    fetch(baseURL)
-      .then((r) => r.json())
+    // fetch(baseURL)
+
+      .then((data) => data.json())
+      .then((data) => { // this is an explicit return. If I want my information to go further, I'll need to use the "return" keyword before the brackets close
+                // console.log(data);
+                return data; // <- this will pass the data to the next "then" statement when I'm ready.
+            })
+      .then(function (data) {
+        for (i = 0; i < data.length; i++) {
+          count_array.push(data[i]["category"]);
+        }
+        for (var i = 0; i < count_array.length; ++i) {
+          if (!result[count_array[i]]) result[count_array[i]] = 0;
+          result[count_array[i]]++;
+        }
+        return result;
+      })
+
+      .then(function (data) {
+        const dataPoints = [];
+
+        Object.keys(data).forEach((category) => {
+          let dataPoint = {y: data[category],label: category,}
+          dataPoints.push(dataPoint);
+        })
+        // console.log(dataPoints);
+        return dataPoints;
+      })
+
       .then((data) => {
-        console.log(data);
+        // console.log(data);
         res.send({ data: data }); // here's where we return data to the front end
       })
-      .catch((err) => {
-        console.log(err);
-        res.redirect('/error');
-      });
-}
+    
+};
 
 // This is our first route on our server.
 // To access it, we can use a "GET" request on the front end
