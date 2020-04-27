@@ -3,8 +3,8 @@
 import express from "express";
 import fetch from "node-fetch";
 
-// const sqlite3 = require('sqlite3').verbose(); // We're including a server-side version of SQLite, the in-memory SQL server.
-// const open = require(sqlite).open; // We're including a server-side version of SQLite, the in-memory SQL server.
+const sqlite3 = require('sqlite3').verbose(); // We're including a server-side version of SQLite, the in-memory SQL server.
+const open = require(sqlite).open; // We're including a server-side version of SQLite, the in-memory SQL server.
 
 import sqlite3 from "sqlite3";
 import { open } from "sqlite";
@@ -46,7 +46,7 @@ function processDataForFrontEnd(req, res) {
 app
   .route("/api")
   .get((req, res) => {
-    // processDataForFrontEnd(req, res)
+    processDataForFrontEnd(req, res)
     (async () => {
       const db = await open(dbSettings);
       const result = await db.all("SELECT * FROM user");
@@ -69,6 +69,7 @@ app
         console.log(err);
       });
     }
+    .put
   });
 
 app.listen(port, () => {

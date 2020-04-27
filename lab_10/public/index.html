@@ -20,6 +20,7 @@
             </textarea
             ><br />
             <button id="formBtn">Submit</button>
+            <button id="getBtn">Display Records</button>
           </form>
         </div>
       </div>
@@ -33,19 +34,19 @@
         const formToSend = new FormData(target);
 
         fetch("/api", {
-          method: "POST",
+          method: "PUT",
           headers: {
             "Content-Type": "application/json",
           },
           body: JSON.stringify(Object.fromEntries(formToSend)),
         })
           .then((data) => data.text()) // note: we didn't send JSON, so there's no JSON to get.
-          .then((txtresponse) => {
+          .then((data) => {
             console.log(txtresponse);
             btn.setAttribute("disabled", true);
             const br = document.createElement("br");
             target.append(br);
-            target.append(`${txtresponse}`);
+            target.append(data.body);
           });
       }
 
@@ -54,3 +55,4 @@
     </script>
   </body>
 </html>
+
